@@ -88,7 +88,7 @@ var community = new Vue({
         {
             title : 'Romain Chapon',
             pseudo : 'LeChaps', 
-            text : 'On en boira du plus mauvais', 
+            text : 'Quoi qu\'il arrive, qui que vous soyez, où que vous buviez, quoi que vous goutiez : On en boira toujours du plus mauvais!',
             img : 'https://picsum.photos/100/100/?random=6',
         }, 
         {
