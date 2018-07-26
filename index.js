@@ -1,9 +1,22 @@
 new Vue(
-    { el: '#header-index' }
-    )
+    { el: '#headerId' }
+)
+
+new Vue(
+    { el: '#footerId' }
+)
+
+new Vue(
+    { el: '#heroarticleId', 
+    data: {
+        img : `https://picsum.photos/1300/500/?image=674`, 
+        title : `Bienvenue sur Club Oeno`, 
+        subtitle : `Le site référence pour les amoureux de l'oenologie` 
+    }
+})
 
 new Vue({
-    el: '#navigation-index', 
+    el: '#navigationId', 
     data: {
         navlinks: [
         {   link: 'article/le_club_oeno',             
@@ -29,7 +42,7 @@ new Vue({
 })
 
 new Vue({
-    el: '#trendarticle',
+    el: '#featuredarticleId',
     data: {
         articles : [
         {
@@ -73,7 +86,7 @@ new Vue({
 
 
 new Vue({
-    el: '#lastarticle',
+    el: '#lastarticlesId',
     data:  { 
         articles : [
         {
@@ -121,7 +134,7 @@ new Vue({
 })
 
 new Vue({
-    el: '#writers',
+    el: '#writersId',
     data:  { 
         writers : [
         {
