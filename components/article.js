@@ -33,7 +33,7 @@ Vue.component('component-featuredarticleslist', {
                                         v-bind:link="article.link" 
                                         v-bind:title="article.title" 
                                         v-bind:publisheddate="article.publisheddate" 
-                                        v-bind:summation="article.summation" >
+                                        v-bind:resume="article.resume" >
                                     </component-featuredarticle>
                                 </ul>
                             </div>
@@ -53,7 +53,7 @@ Vue.component('component-featuredarticleslist', {
 
 //Sous partie de la liste des articles tendances
 Vue.component('component-featuredarticle', {
-    props: ['img', 'link', 'title', 'publisheddate', 'summation'],
+    props: ['img', 'link', 'title', 'publisheddate', 'resume'],
     template : `<li>
                     <div class="uk-card uk-card-default uk-card-body uk-card-small uk-flex uk-flex-middle uk-card-default uk-border-rounded">
                         <div class="uk-grid uk-grid-medium uk-flex uk-flex-middle" data-uk-grid>
@@ -66,7 +66,7 @@ Vue.component('component-featuredarticle', {
                                     <a class="uk-link-reset" v-bind:href="link">{{title}}</a>
                                 </h3>
                                 <span class="uk-article-meta">Publié le {{publisheddate}}</span>
-                                <p class="uk-margin-small">{{summation}}...</p>
+                                <p class="uk-margin-small">{{resume}}...</p>
                             </div>
                         </div>
                     </div>

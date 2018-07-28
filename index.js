@@ -10,7 +10,7 @@ var navigationlinks = [
     {   link: 'article/les_regions_francaises',
         title: 'Les régions françaises'
     },
-    {   link: 'page/les_cepages',                 
+    {   link: 'page/les_cepages.html',                 
         title: 'Les cépages'
     },
     {   link: 'article/la_vinification', 
@@ -26,35 +26,35 @@ var featuredarticles = [
         title : 'Short Blog Title',
         link : 'link1',
         publisheddate : '12th August 2018', 
-        summation : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do', 
+        resume : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do', 
         img : 'https://picsum.photos/500/500/?random=1' 
     },
     {
         title : 'Short Blog Title',
         link : 'link2',
         publisheddate : '12th August 2018', 
-        summation : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do', 
+        resume : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do', 
         img : 'https://picsum.photos/500/500/?random=2' 
     },
     {
         title : 'Short Blog Title',
         link : 'link3',
         publisheddate : '12th August 2018', 
-        summation : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do', 
+        resume : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do', 
         img : 'https://picsum.photos/500/500/?random=3' 
     },
     {
         title : 'Short Blog Title',
         link : 'link4',
         publisheddate : '12th August 2018', 
-        summation : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do', 
+        resume : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do', 
         img : 'https://picsum.photos/500/500/?random=4' 
     },
     {
         title : 'Short Blog Title',
         link : 'link5',
         publisheddate : '12th August 2018', 
-        summation : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do', 
+        resume : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do', 
         img : 'https://picsum.photos/500/500/?random=5' 
     }
 ];
