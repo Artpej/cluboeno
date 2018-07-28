@@ -2,8 +2,14 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Club Oeno</title>
+		<meta charset="utf-8">
+		<meta name="author" content="LeChaps">
+		<meta name="description" content="L'oenologie et l'univers des vins et spiriteux &agrave; port&eacute; de clics. Des cours, des tutoriels, des d&eacute;gustations, des d&eacute;couvertes en quelques clics.">
+		<meta name="keywords" content="club, oenologie, degustation, cours, vin, avis, ">
+		<meta name="robots" content="index, follow">
+		<meta name="ICBM" content="46.098514, 3.199208">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Club Oeno - L'oenologie et l'univers des vins et spiriteux &agrave; port&eacute; de clics </title>
 		<link rel="icon" href="img/favicon.ico">
 		<!-- CSS FILES -->
 		<link rel="stylesheet" type="text/css" href="./css/uikit.min.css">
@@ -13,7 +19,7 @@
 		<div class="uk-offcanvas-content">
 			<!--HEADER-->
 			<div id="headerId">
-				<component-header></component-header>
+				<component-header v-bind:socials="socialmedias"></component-header>
 			</div>
 			<!--/HEADER-->
 			<!-- NAVIGATION -->
@@ -32,17 +38,8 @@
 			</div>
 			<!-- /FEATURED -->
 			<!--CONTENT-->
-			<div class="uk-section uk-section-default">
-				<div class="uk-container">
-					<div class="uk-grid" data-ukgrid>
-						<div class="uk-width-2-3@m" id="lastarticlesId">
-							<component-articleslist v-bind:articles="articles"></component-articleslist>
-						</div>
-						<div class="uk-width-1-3@m" id="writersId">
-							<component-writerslist v-bind:writers="writers"></component-writerslist>
-						</div>
-					</div>
-				</div>
+			<div id="contentindexId">
+				<component-contentindex v-bind:articles="articles" v-bind:writers="writers"></component-contentindex>
 			</div>
 			<!--/CONTENT-->
 			<!--FOOTER-->
@@ -51,27 +48,8 @@
 			</div>
 			<!--/FOOTER-->
 			<!-- OFFCANVAS -->
-			<div id="offcanvas-nav" data-uk-offcanvas="flip: true; overlay: true">
-				<div class="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide">
-					<button class="uk-offcanvas-close uk-close" type="button" data-uk-close></button>
-					<ul class="uk-nav uk-nav-default">
-						<li class="uk-active"><a href="#">Active</a></li>
-						<li class="uk-parent">
-							<a href="#">Parent</a>
-							<ul class="uk-nav-sub">
-								<li><a href="#">Sub item</a></li>
-								<li><a href="#">Sub item</a></li>
-							</ul>
-						</li>
-						<li class="uk-nav-header">Header</li>
-						<li><a href="#js-options"><span class="uk-margin-small-right" data-uk-icon="icon: table"></span> Item</a></li>
-						<li><a href="#"><span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span> Item</a></li>
-						<li class="uk-nav-divider"></li>
-						<li><a href="#"><span class="uk-margin-small-right" data-uk-icon="icon: trash"></span> Item</a></li>
-					</ul>
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-				</div>
+			<div id="offcanvasId">
+				<component-offcanvas v-bind:navlinks="navlinks"></component-offcanvas>
 			</div>
 			<!-- /OFFCANVAS -->
 		</div>
@@ -84,6 +62,7 @@
 		<script src="components/footer.js"></script>
 		<script src="components/article.js"></script>
 		<script src="components/writers.js"></script>
+		<script src="components/content.js"></script>
 		<script src="index.js"></script>
 	</body>
 </html>
