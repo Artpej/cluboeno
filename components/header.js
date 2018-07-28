@@ -1,4 +1,17 @@
+var socialmedias = [
+    {   icon: 'facebook',             
+        link: '#'
+    },
+    {   icon: 'twitter',             
+        link: '#'
+    },
+    {   icon: 'instagram',             
+        link: '#'
+    }
+];
+
 Vue.component('component-header', {
+    props: ['socials' ],
     template: ` <header style="background-color: #fff;" data-uk-sticky="show-on-up: true; animation: uk-animation-fade; media: @l">
                     <div class="uk-container">
                         <nav id="navbar" data-uk-navbar="mode: click;">
@@ -14,9 +27,8 @@ Vue.component('component-header', {
                             <div class="uk-navbar-right nav-overlay">
                                 <a class="uk-navbar-toggle uk-visible@m" data-uk-search-icon data-uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
                                 <div class="uk-navbar-item">
-                                    <a class="uk-visible@s" style="margin-right: 4px" href="#" data-uk-icon="facebook"></a>
-                                    <a class="uk-visible@s" style="margin-right: 4px" href="#" data-uk-icon="twitter"></a>
-                                    <a class="uk-visible@s" style="margin-right: 4px" href="#" data-uk-icon="instagram"></a>
+                                    <a class="uk-visible@s" style="margin-right: 4px" href="#" data-uk-icon="instragram" uk-tooltip="title: Bientôt disponible; pos: left"></a>
+                                    <a v-for="social in socials" class="uk-visible@s" style="margin-right: 4px" v-bind:href="social.link" v-bind:data-uk-icon="social.icon" uk-tooltip="title: Bientôt disponible; pos: left"></a>
                                     <a class="uk-navbar-toggle uk-hidden@m" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-nav"></a>
                                 </div>
                             </div>
