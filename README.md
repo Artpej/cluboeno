@@ -1,5 +1,8 @@
 # cluboeno
-www.cluboeno.com front sources (made with vueJs and Uikit)
+www.cluboeno.com front sources : 
+- vueJs for JS library
+- Axios for API management
+- Uikit for CSS
 
 
 ### Install
