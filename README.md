@@ -9,7 +9,7 @@ www.cluboeno.com front sources :
 download, put somewhere, have fun ;-)
 
 ### How it work?
-front with API
+use the open data from api.cluboeno.com
 
 
 ## Authors
