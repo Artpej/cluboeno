@@ -21,44 +21,6 @@ var navigationlinks = [
     }
 ];
 
-var featuredarticles = [
-    {
-        title : 'Short Blog Title',
-        link : 'link1',
-        publisheddate : '12th August 2018', 
-        resume : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do', 
-        img : 'https://picsum.photos/500/500/?random=1' 
-    },
-    {
-        title : 'Short Blog Title',
-        link : 'link2',
-        publisheddate : '12th August 2018', 
-        resume : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do', 
-        img : 'https://picsum.photos/500/500/?random=2' 
-    },
-    {
-        title : 'Short Blog Title',
-        link : 'link3',
-        publisheddate : '12th August 2018', 
-        resume : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do', 
-        img : 'https://picsum.photos/500/500/?random=3' 
-    },
-    {
-        title : 'Short Blog Title',
-        link : 'link4',
-        publisheddate : '12th August 2018', 
-        resume : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do', 
-        img : 'https://picsum.photos/500/500/?random=4' 
-    },
-    {
-        title : 'Short Blog Title',
-        link : 'link5',
-        publisheddate : '12th August 2018', 
-        resume : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do', 
-        img : 'https://picsum.photos/500/500/?random=5' 
-    }
-];
-
 var lastarticles=[
     {
         title : 'Fusce facilisis tempus magna ac dignissim 1',
@@ -117,7 +79,6 @@ writers = [
     }
 ];
 
-
 /**************** C O M P O N E N T   A C T I V A T I O N ****************/
 new Vue(
     { el: '#headerId' }
@@ -130,9 +91,11 @@ new Vue(
 new Vue(
     { el: '#heroarticleId', 
     data: {
-        img : `https://picsum.photos/1300/500/?image=674`, 
-        title : `Bienvenue sur Club Oeno`, 
-        subtitle : `Le site référence pour les amoureux de l'oenologie` 
+        article: {
+            img : `https://picsum.photos/1300/500/?image=674`, 
+            title : `Bienvenue sur Club Oeno`, 
+            subtitle : `Le site référence pour les amoureux de l'oenologie` 
+        }
     }
 });
 
@@ -145,11 +108,26 @@ new Vue({
 
 new Vue({
     el: '#featuredarticleId',
-    data: {
-        articles : featuredarticles
+    data () {
+       return {
+           articles: null,
+           loading: true,
+           errored: false
+        }
+    },
+    mounted () {
+        axios
+        .get('http://api.cluboeno.com/index.php' )
+        .then(response => (
+            this.articles = response.data.featuredarticles)
+        )
+        .catch(error => {
+            console.log(error)
+            this.errored = true
+        })
+        .finally(() => this.loading = false)
     }
 });
-
 
 new Vue({
     el: '#contentindexId',

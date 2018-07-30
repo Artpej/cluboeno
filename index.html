@@ -29,12 +29,12 @@
 			<!-- /NAVIGATION -->
 			<!-- HERO -->
 			<div id="heroarticleId">
-				<component-heroarticle  v-bind:img="img" v-bind:title="title" v-bind:subtitle="subtitle"></component-heroarticle>
+				<component-heroarticle  v-bind:article="article"></component-heroarticle>
 			</div>
 			<!-- HERO -->
 			<!-- FEATURED -->
 			<div id="featuredarticleId">
-				<component-featuredarticleslist v-bind:articles="articles"></component-featuredarticleslist>
+				<component-featuredarticleslist v-bind:articles="articles" v-bind:errored="errored" v-bind:loading="loading"></component-featuredarticleslist>
 			</div>
 			<!-- /FEATURED -->
 			<!--CONTENT-->
@@ -57,6 +57,7 @@
 		<script src="./js/uikit.min.js"></script>
 		<script src="./js/uikit-icons.min.js"></script>
 		<script src="./js/vue.min.js"></script>
+		<script src="./js/axios.min.js"></script>
 		<script src="components/header.js"></script>
 		<script src="components/navigation.js"></script>
 		<script src="components/footer.js"></script>
