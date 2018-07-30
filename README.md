@@ -17,7 +17,7 @@ use the open data from api.cluboeno.com
 * thanks to my clerver genius friend [@artpej](https://github.com/artpej) and my boss [@khrys63](https://github.com/khrys63)
 
 ## Inspired by
-[zzseba78/Kick-Off](https://github.com/zzseba78/Kick-Off) 
+[zzseba78/Kick-Off](https://github.com/zzseba78/Kick-Off) for the UI
 
 ## License
 MIT
