@@ -90,13 +90,32 @@ new Vue(
 
 new Vue(
     { el: '#heroarticleId', 
-    data: {
+    data () {
+        return {
+            articles: null,
+            loading: true,
+            errored: false
+        }
+    },
+    mounted () {
+        axios
+        .post('https://api.cluboeno.com/articles.php/HERO')
+        .then(response => (
+            this.articles = response.data.articles) //a faire : catcher le message si aucun article à afficher
+        )
+        .catch(error => {
+            console.log(error)
+            this.errored = true
+        })
+        .finally(() => this.loading = false)
+    }
+   /* data: {
         article: {
             img : `https://picsum.photos/1300/500/?image=674`, 
             title : `Bienvenue sur Club Oeno`, 
-            subtitle : `Le site référence pour les amoureux de l'oenologie` 
+            resume : `Le site référence pour les amoureux de l'oenologie` 
         }
-    }
+    }*/
 });
 
 new Vue({
@@ -117,9 +136,9 @@ new Vue({
     },
     mounted () {
         axios
-        .get('http://api.cluboeno.com/index.php' )
+        .post('https://api.cluboeno.com/articles.php/FEATURED/')
         .then(response => (
-            this.articles = response.data.featuredarticles)
+            this.articles = response.data.articles) //a faire : catcher le message si aucun article à afficher
         )
         .catch(error => {
             console.log(error)

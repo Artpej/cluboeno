@@ -1,21 +1,28 @@
 //Article en tête de page d'accueil
 Vue.component('component-heroarticle', {
-    props: ['article' ],
-    template: ` <section class="uk-section uk-section-small">
+    props: ['articles', 'errored', 'loading'],
+    template: `<section  class="uk-section uk-section-small">
                     <div class="uk-container">
-                        <div class="uk-height-large uk-cover-container uk-border-rounded">
-                            <img v-bind:src="article.img" alt="Alt img" data-uk-cover>
-                            <div class="uk-overlay uk-overlay-primary uk-position-cover uk-flex uk-flex-center uk-flex-middle uk-light uk-text-center">
-                                <div data-uk-scrollspy="cls: uk-animation-slide-bottom-small">
-                                    <span style="letter-spacing: 0.2em; font-size: 0.725rem">Présentation</span>
-                                    <h1 class="uk-margin-top uk-margin-small-bottom uk-margin-remove-adjacent">{{article.title}}</h1>
-                                    <p>{{article.subtitle}}</p>
-                                    <a href="./article/le_club_oeno" class="uk-button uk-button-default uk-margin-top">Lire l'article</a>
+                        <div v-if="errored">
+                        <p>Erreur de chargement</p>
+                    </div>
+                    <div v-else>
+                        <div v-if="loading"><div uk-spinner="ratio: 6"></div></div>
+                        <div v-else class="uk-height-large uk-cover-container uk-border-rounded" v-for="article in articles">
+                                <img v-bind:src="article.img" alt="Alt img" data-uk-cover>
+                                <div class="uk-overlay uk-overlay-primary uk-position-cover uk-flex uk-flex-center uk-flex-middle uk-light uk-text-center">
+                                    <div data-uk-scrollspy="cls: uk-animation-slide-bottom-small">
+                                        <span style="letter-spacing: 0.2em; font-size: 0.725rem">Présentation</span>
+                                        <h1 class="uk-margin-top uk-margin-small-bottom uk-margin-remove-adjacent">{{article.title}}</h1>
+                                        <p>{{article.resume}}</p>
+                                        <a href="./article/le_club_oeno" class="uk-button uk-button-default uk-margin-top">Lire l'article</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>`
+                </section>
+`
 });
 
 Vue.component('component-featuredarticleslist', {
