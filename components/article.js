@@ -81,11 +81,16 @@ Vue.component('component-featuredarticle', {
 
 //Liste des articles (sauf les tendances)
 Vue.component('component-articleslist', {
-    props: ['articles'],
+    props: ['articles', 'loadingarticles', 'erroredarticles'],
     template: ` <div>
                     <h4 class="uk-heading-line uk-text-bold"><span>Derniers articles</span></h4>
-                    <componentarticle v-for="article in articles" v-bind:article="article">
-                    </componentarticle>
+                    <div v-if="erroredarticles">
+                        <p>Erreur de chargement</p>
+                    </div>
+                    <div v-else>
+                        <div v-if="loadingarticles"><div uk-spinner="ratio: 3"></div></div>
+                        <componentarticle v-else v-for="article in articles" v-bind:article="article"></componentarticle>
+                    </div>
                 </div>
                 `
 }) ;
@@ -102,7 +107,7 @@ Vue.component('componentarticle', {
                         <img v-bind:src="article.img" width="800" height="300"  alt="Alt text" class="lazy">
                         <figcaption class="uk-padding-small uk-text-center uk-text-muted">Caption of the image</figcaption>
                     </figure>
-                    <p>{{article.text}}</p>
+                    <p>{{article.resume}}</p>
                     <a href="#" title="Read More" class="uk-button uk-button-default uk-button-small">Lire</a>
                     <hr>
                 </article>`
