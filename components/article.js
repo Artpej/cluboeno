@@ -81,15 +81,15 @@ Vue.component('component-featuredarticle', {
 
 //Liste des articles (sauf les tendances)
 Vue.component('component-articleslist', {
-    props: ['articles', 'loadingarticles', 'erroredarticles'],
+    props: ['articles', 'loadingarticles', 'erroredarticles', 'loadinginfinite'],
     template: ` <div>
                     <h4 class="uk-heading-line uk-text-bold"><span>Derniers articles</span></h4>
                     <div v-if="erroredarticles">
                         <p>Erreur de chargement</p>
                     </div>
                     <div v-else>
+                        <componentarticle v-for="article in articles" v-bind:article="article" v-bind:loadinginfinite="loadinginfinite">></componentarticle>
                         <div v-if="loadingarticles"><div uk-spinner="ratio: 3"></div></div>
-                        <componentarticle v-else v-for="article in articles" v-bind:article="article"></componentarticle>
                     </div>
                 </div>
                 `
