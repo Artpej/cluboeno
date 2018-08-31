@@ -22,12 +22,11 @@ Vue.component('component-header', {
                                 </ul>
                             </div>
                             <div class="uk-navbar-center nav-overlay">
-                                <a class="uk-navbar-item uk-logo" href="#" title="Logo"><span uk-icon="icon:bookmark;ratio:3"></span></a>
+                                <a class="uk-navbar-item uk-logo" href="index.html" title="Logo"><span uk-icon="icon:git-fork;ratio:3"></span></a>
                             </div>
                             <div class="uk-navbar-right nav-overlay">
-                                <a class="uk-navbar-toggle uk-visible@m" data-uk-search-icon data-uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
+                                <a class="uk-navbar-toggle uk-visible@m" data-uk-search-icon uk-tooltip="title: Bientôt disponible; pos: right" data-uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
                                 <div class="uk-navbar-item">
-                                    <a class="uk-visible@s" style="margin-right: 4px" href="#" data-uk-icon="instragram" uk-tooltip="title: Bientôt disponible; pos: left"></a>
                                     <a v-for="social in socials" class="uk-visible@s" style="margin-right: 4px" v-bind:href="social.link" v-bind:data-uk-icon="social.icon" uk-tooltip="title: Bientôt disponible; pos: left"></a>
                                     <a class="uk-navbar-toggle uk-hidden@m" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-nav"></a>
                                 </div>

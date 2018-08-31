@@ -1,26 +1,3 @@
-/**************** D A T A   L O A D I N G  ****************/
-
-var navigationlinks = [
-    {   link: 'article/le_club_oeno',             
-        title: 'Le club Oeno'
-    },
-    {   link: 'article/les_pays_producteurs',
-        title: 'Les pays producteurs de vin'
-    },
-    {   link: 'article/les_regions_francaises',
-        title: 'Les régions françaises'
-    },
-    {   link: 'page/les_cepages.html',                 
-        title: 'Les cépages'
-    },
-    {   link: 'article/la_vinification', 
-        title: 'La vinification'
-    },
-    {   link: 'article/l_oenologie',              
-        title: 'L\'oenologie'
-    }
-];
-
 /**************** C O M P O N E N T   A C T I V A T I O N ****************/
 /*--------------- Header ---------------*/
 new Vue(
@@ -37,7 +14,7 @@ new Vue(
     { el: '#heroarticleId', 
     data () {
         return {
-            articles: null,
+            article: null,
             loading: true,
             errored: false
         }
@@ -46,7 +23,7 @@ new Vue(
         axios
         .post('https://api.cluboeno.com/articles.php/HERO')
         .then(response => (
-            this.articles = response.data.articles) //a faire : catcher le message si aucun article à afficher
+            this.article = response.data.article) //a faire : catcher le message si aucun article à afficher
         )
         .catch(error => {
             console.log(error)
@@ -54,13 +31,6 @@ new Vue(
         })
         .finally(() => this.loading = false)
     }
-   /* data: {
-        article: {
-            img : `https://picsum.photos/1300/500/?image=674`, 
-            title : `Bienvenue sur Club Oeno`, 
-            resume : `Le site référence pour les amoureux de l'oenologie` 
-        }
-    }*/
 });
 
 /*--------------- Navigation ---------------*/
@@ -129,7 +99,7 @@ new Vue({
         // Affichage des articles
         getArticles () {
             axios
-            .post('https://api.cluboeno.com/articles.php/LAST/', { start: this.start, nb: this.nb })
+            .post('https://api.cluboeno.com/articles.php/FLOW/', { start: this.start, nb: this.nb })
             .then(response => {
                 //if nothing then we stop by activating the "end flag"
                 if (response.data.articles === undefined) {

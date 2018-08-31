@@ -33,4 +33,21 @@ Vue.component('component-writer', {
                         <div class="uk-card-body uk-text-small uk-text-center">{{writer.text}}</div>
                     </div>
                 </li>`
-})
+}) ;
+
+Vue.component('component-articlewriter', {
+    props: ['writer'],
+    template : `<section class="uk-section uk-section-small">
+                    <div id="author-wrap" class="uk-container uk-container-small">
+                        <div class="uk-grid uk-grid-medium uk-flex uk-flex-middle" data-uk-grid>
+                            <div class="uk-width-auto">
+                                <img v-bind:src="writer.img" alt="" class="uk-border-circle">
+                            </div>
+                            <div class="uk-width-expand">
+                                <h4 class="uk-margin-remove uk-text-bold">{{writer.name}} ({{writer.pseudo}})</h4>
+                                <span class="uk-text-small uk-text-muted">{{writer.text}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>`
+}) ;
