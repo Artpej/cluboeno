@@ -1,3 +1,24 @@
+var navigationlinks = [
+    {   link: 'article/le_club_oeno',             
+        title: 'Le club Oeno'
+    },
+    {   link: 'article/les_pays_producteurs',
+        title: 'Les pays producteurs de vin'
+    },
+    {   link: 'article/les_regions_francaises',
+        title: 'Les régions françaises'
+    },
+    {   link: 'page/les_cepages.html',                 
+        title: 'Les cépages'
+    },
+    {   link: 'article/la_vinification', 
+        title: 'La vinification'
+    },
+    {   link: 'article/l_oenologie',              
+        title: 'L\'oenologie'
+    }
+];
+
 Vue.component('component-nav', {
     props: ['navlinks'],
     template: ` <div class="uk-container" id="navigation-index">
