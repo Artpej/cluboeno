@@ -23,7 +23,7 @@ new Vue(
     },
     mounted () {
         axios
-        .post('https://api.cluboeno.com/articles.php/HERO') //post('https://api.cluboeno.com/articles.php/ONE', { link: query['id'] } )
+        .post('https://api.cluboeno.com/articles.php/ONE/', { link: query['id']}) //post('https://api.cluboeno.com/articles.php/ONE', { link: query['id'] } )
         .then(response => (
             this.article = response.data.article) //a faire : catcher le message si aucun article à afficher
         )

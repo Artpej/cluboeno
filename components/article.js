@@ -129,7 +129,6 @@ Vue.component('component-articledetail', {
                                 <h2 class="uk-text-bold uk-h1 uk-margin-remove-adjacent uk-margin-remove-top">{{article.title}}</h2>
                                 <p class="uk-article-meta">Publié {{article.publisheddate}}  | <span data-uk-icon="icon: future"></span> Se lit en {{article.readingtime}}</p>
                                 <p class="uk-text-lead">{{article.resume}}</p>
-                                <p>UPDATE 24th October 15.10 BST — Vivamus sed consequat urna. Fusce vitae urna sed ante placerat iaculis. Suspendisse potenti. Pellentesque quis fringilla libero. In hac habitasse platea dictumst.</p>
                             </div>
                             <!-- large image -->
                             <div class="uk-container uk-section">
@@ -163,21 +162,7 @@ Vue.component('component-articledetail', {
                             </div>
                             <!-- /large image -->
                             <!-- text -->
-                            <div class="uk-container uk-container-small">
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                                <blockquote cite="#">
-                                    <p class="uk-margin-small-bottom">The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a footer or cite element.</p>
-                                    <footer>Someone famous in <cite><a href="#">Source Title</a></cite></footer>
-                                </blockquote>
-                                <h3>Aenean ultricies mi vitae est.</h3>
-                                <p>Nulla facilisi. Mauris euismod metus eu augue dictum luctus. Aliquam tellus mi, venenatis sit amet laoreet non, laoreet sit amet dolor. Mauris feugiat sem sit amet tortor tristique, eu varius risus accumsan. Nullam tincidunt erat sed turpis suscipit, in lacinia mi venenatis. Proin in dui sed neque malesuada dictum vitae vitae elit. I</p>
-                                <ul>
-                                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                                    <li>Aliquam tincidunt mauris eu risus.</li>
-                                    <li>Vestibulum auctor dapibus neque.</li>
-                                </ul>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                            </div>
+                            <div class="uk-container uk-container-small">{{article.text}}</div>
                             <!-- text -->
                             <!-- gallery -->
                             <div class="uk-container uk-container-small uk-margin-medium">
