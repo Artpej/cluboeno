@@ -161,9 +161,11 @@ Vue.component('component-articledetail', {
                                 </div>
                             </div>
                             <!-- /large image -->
+
                             <!-- text -->
-                            <div class="uk-container uk-container-small">{{article.text}}</div>
+                            <div class="uk-container uk-container-small" v-html="article.contents"></div>
                             <!-- text -->
+
                             <!-- gallery -->
                             <div class="uk-container uk-container-small uk-margin-medium">
                                 <div class="uk-grid uk-grid-medium uk-child-width-1-2 uk-child-width-1-3@s" data-uk-grid data-uk-lightbox>
