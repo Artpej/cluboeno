@@ -21,7 +21,7 @@ new Vue(
     },
     mounted () {
         axios
-        .post('https://api.cluboeno.com/articles.php/HERO')
+        .get('https://api.cluboeno.com/articles.php/HERO')
         .then(response => (
             this.article = response.data.article) //a faire : catcher le message si aucun article à afficher
         )
@@ -52,7 +52,7 @@ new Vue({
     },
     mounted () {
         axios
-        .post('https://api.cluboeno.com/articles.php/FEATURED/')
+        .get('https://api.cluboeno.com/articles.php/FEATURED/')
         .then(response => (
             this.articles = response.data.articles) //a faire : catcher le message si aucun article à afficher
         )
@@ -81,7 +81,7 @@ new Vue({
     },
     mounted () {
         axios
-        .post('https://api.cluboeno.com/writers.php/ALL/')
+        .get('https://api.cluboeno.com/writers.php/ALL/')
         .then(response => (
             this.writers = response.data.writers) //a faire : catcher le message si aucun article à afficher
         )
@@ -99,7 +99,7 @@ new Vue({
         // Affichage des articles
         getArticles () {
             axios
-            .post('https://api.cluboeno.com/articles.php/FLOW/', { start: this.start, nb: this.nb })
+            .get('https://api.cluboeno.com/articles.php/FLOW/'+this.start+'/'+this.nb)
             .then(response => {
                 //if nothing then we stop by activating the "end flag"
                 if (response.data.articles === undefined) {
