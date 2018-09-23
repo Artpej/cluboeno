@@ -9,7 +9,7 @@ Vue.component('component-heroarticle', {
                     <div v-else>
                         <div v-if="loading"><div uk-spinner="ratio: 6"></div></div>
                         <div v-else class="uk-height-large uk-cover-container uk-border-rounded">
-                                <img v-bind:src="article.img" alt="Alt img" data-uk-cover>
+                                <img v-bind:src="article.img" alt="Alt img" with="1300" height="500" data-uk-cover>
                                 <div class="uk-overlay uk-overlay-primary uk-position-cover uk-flex uk-flex-center uk-flex-middle uk-light uk-text-center">
                                     <div data-uk-scrollspy="cls: uk-animation-slide-bottom-small">
                                         <span style="letter-spacing: 0.2em; font-size: 0.725rem">Présentation</span>
@@ -115,7 +115,7 @@ Vue.component('component-articlelistdetail', {
 });
 
 
-//Page dédié des articles
+//Page dédié aux articles
 Vue.component('component-articledetail', {
     props: ['article', 'loading', 'errored'],
     template : `<section class="uk-section uk-article">
@@ -134,27 +134,7 @@ Vue.component('component-articledetail', {
                             <div class="uk-container uk-section">
                                 <div class="uk-position-relative uk-visible-toggle uk-light" data-uk-slideshow="ratio: 7:3; animation: push; min-height: 270;">
                                     <ul class="uk-slideshow-items">
-                                        <li>
-                                            <img src="http://www.zurcherarquitectos.com/files/cache/w1300h600q75-landscape-introweb-qt-.jpg" alt="" data-uk-cover>
-                                            <div class="uk-position-bottom uk-position-medium uk-text-center uk-light">
-                                                <h3 class="uk-margin-remove">Sed consequat urna.</h3>
-                                                <p class="uk-margin-remove uk-visible@s">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <img src="http://www.patriciatravels.com/wp-content/uploads/2016/02/verdura-springs.jpg" alt="" data-uk-cover>
-                                            <div class="uk-position-bottom uk-position-medium uk-text-center uk-light">
-                                                <h3 class="uk-margin-remove">Vivamus sed consequat urna.</h3>
-                                                <p class="uk-margin-remove uk-visible@s">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <img src="http://www.slpoty.co.uk/wp-content/uploads/2015/01/Craig_Aitchison-Buachaille_Etive_Mor.jpg" alt="" data-uk-cover>
-                                            <div class="uk-position-bottom uk-position-medium uk-text-center uk-light">
-                                                <h3 class="uk-margin-remove">Sed consequat urna.</h3>
-                                                <p class="uk-margin-remove uk-visible@s">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                            </div>
-                                        </li>
+                                        <component-articledetailgalerylargeimage v-for="image in article.galery" v-bind:image="image"></component-articledetailgalerylargeimage>
                                     </ul>
                                     <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" data-uk-slidenav-previous="ratio: 1.5" data-uk-slideshow-item="previous"></a>
                                     <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" data-uk-slidenav-next="ratio: 1.5" data-uk-slideshow-item="next"></a>
@@ -169,47 +149,106 @@ Vue.component('component-articledetail', {
                             <!-- gallery -->
                             <div class="uk-container uk-container-small uk-margin-medium">
                                 <div class="uk-grid uk-grid-medium uk-child-width-1-2 uk-child-width-1-3@s" data-uk-grid data-uk-lightbox>
-                                    <div>
-                                        <figure>
-                                            <a data-caption="Image Caption" title="Image Caption" href="http://www.zurcherarquitectos.com/files/cache/w1300h600q75-landscape-introweb-qt-.jpg"><img src="https://unsplash.it/300/170/?random" alt="Image Caption"></a>
-                                            <figcaption class="uk-text-small uk-text-muted uk-text-center uk-padding-small uk-visible@s">Aenean vitae est</figcaption>
-                                        </figure>
-                                    </div>
-                                    <div>
-                                        <figure>
-                                            <a data-caption="Image Caption" title="Image Caption" href="http://www.zurcherarquitectos.com/files/cache/w1300h600q75-landscape-introweb-qt-.jpg"><img src="https://unsplash.it/300/170/?random" alt="Image Caption"></a>
-                                            <figcaption class="uk-text-small uk-text-muted uk-text-center uk-padding-small uk-visible@s">Aenean vitae est</figcaption>
-                                        </figure>
-                                    </div>
-                                    <div>
-                                        <figure>
-                                            <a data-caption="Image Caption" title="Image Caption" href="http://www.zurcherarquitectos.com/files/cache/w1300h600q75-landscape-introweb-qt-.jpg"><img src="https://unsplash.it/300/170/?random" alt="Image Caption"></a>
-                                            <figcaption class="uk-text-small uk-text-muted uk-text-center uk-padding-small uk-visible@s">Aenean vitae est</figcaption>
-                                        </figure>
-                                    </div>
-                                    <div>
-                                        <figure>
-                                            <a data-caption="Image Caption" title="Image Caption" href="http://www.zurcherarquitectos.com/files/cache/w1300h600q75-landscape-introweb-qt-.jpg"><img src="https://unsplash.it/300/170/?random" alt="Image Caption"></a>
-                                            <figcaption class="uk-text-small uk-text-muted uk-text-center uk-padding-small uk-visible@s">Aenean vitae est</figcaption>
-                                        </figure>
-                                    </div>
-                                    <div>
-                                        <figure>
-                                            <a data-caption="Image Caption" title="Image Caption" href="http://www.zurcherarquitectos.com/files/cache/w1300h600q75-landscape-introweb-qt-.jpg"><img src="https://unsplash.it/300/170/?random" alt="Image Caption"></a>
-                                            <figcaption class="uk-text-small uk-text-muted uk-text-center uk-padding-small uk-visible@s">Aenean vitae est</figcaption>
-                                        </figure>
-                                    </div>
-                                    <div>
-                                        <figure>
-                                            <a data-caption="Image Caption" title="Image Caption" href="http://www.zurcherarquitectos.com/files/cache/w1300h600q75-landscape-introweb-qt-.jpg"><img src="https://unsplash.it/300/170/?random" alt="Image Caption"></a>
-                                            <figcaption class="uk-text-small uk-text-muted uk-text-center uk-padding-small uk-visible@s">Aenean vitae est</figcaption>
-                                        </figure>
-                                    </div>
-                                    
+                                    <component-articledetailgalery v-for="image in article.galery" v-bind:image="image"></component-articledetailgalery>
                                 </div>
                             </div>
                             <!-- /gallery -->
                         </div>
                     </div>
                 </section>`
+});
+
+//Page dédié aux articles : partie galerie d'image
+Vue.component('component-articledetailgalerylargeimage', {
+    props: ['image'],
+    template : `
+    <li>
+        <img v-bind:src="image.img" alt="" data-uk-cover>
+        <div class="uk-position-bottom uk-position-medium uk-text-center uk-light">
+            <h3 class="uk-margin-remove">{{image.title}}</h3>
+            <p class="uk-margin-remove uk-visible@s">{{image.text}}</p>
+        </div>
+    </li>`
+});
+
+//Page dédié aux articles : partie galerie d'image
+Vue.component('component-articledetailgalery', {
+    props: ['image'],
+    template : `
+    <div>
+        <figure>
+            <a v-bind:data-caption="image.title" v-bind:title="image.title" v-bind:href="image.img"><img v-bind:src="image.img" with="300" height="170" v-bind:alt="image.title"></a>
+            <figcaption class="uk-text-small uk-text-muted uk-text-center uk-padding-small uk-visible@s">{{image.title}}</figcaption>
+        </figure>
+    </div>`
+});
+
+//Page dédié aux articles : plus d'article de l'auteur
+Vue.component('component-morearticle', {
+    props: ['articles', 'loading', 'errored'],
+    template : `<section class="uk-section uk-section-muted">
+                    <div v-if="errored">
+                        <p>Erreur de chargement</p>
+                    </div>
+                    <div v-else>
+                        <div v-if="loading" class="uk-container uk-container-small"><div uk-spinner="ratio: 6"></div></div>
+                        <div v-else> 
+                            <div class="uk-container">
+                                <h2 class="uk-text-bold">Articles du même auteur</h2>
+                                <div data-uk-slider="velocity: 5">
+                                    <div class="uk-position-relative">
+                                        <div class="uk-slider-container">
+                                            <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-grid-medium">
+                                                <component-morearticledetail v-for="article in articles" v-bind:article="article"></component-morearticledetail>
+                                            </ul>
+                                        </div>
+                                        <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin">
+                                        </ul>
+                                        <div class="uk-hidden@m uk-light">
+                                            <a class="uk-position-center-left uk-position-small" href="#" data-uk-slidenav-previous data-uk-slider-item="previous"></a>
+                                            <a class="uk-position-center-right uk-position-small" href="#" data-uk-slidenav-next data-uk-slider-item="next"></a>
+                                        </div>
+                                        <div class="uk-visible@m">
+                                            <a class="uk-position-center-left-out uk-position-small" href="#" data-uk-slidenav-previous data-uk-slider-item="previous"></a>
+                                            <a class="uk-position-center-right-out uk-position-small" href="#" data-uk-slidenav-next data-uk-slider-item="next"></a>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>`
+});
+
+//Page dédié aux articles : plus d'article de l'auteur -> détail
+Vue.component('component-morearticledetail', {
+    props: ['article'],
+    template : `<li>
+                    <!-- card -->
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-small" style="box-shadow: none;">
+                            <div class="uk-card-media-top">
+                                <a href="#"><img v-bind:src="article.img" with="620" height="350" alt=""></a>
+                            </div>
+                            <div class="uk-card-header">
+                                <div class="uk-grid-small uk-flex-middle" data-uk-grid>
+                                    <div class="uk-width-auto">
+                                        <img class="uk-border-circle" alt="" width="40" height="40" src="https://unsplash.it/60/60/?random">
+                                    </div>
+                                    <div class="uk-width-expand">
+                                        <h6 class="uk-margin-remove-bottom uk-text-bold">Author Name</h6>
+                                        <p class="uk-text-meta uk-margin-remove-top uk-text-small"><time datetime="2016-04-01T19:00">April 01, 2016</time></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-card-body">
+                                <h4 class="uk-margin-small-bottom uk-text-bold">{{article.title}}</h4>
+                                <span class="uk-text-small">{{article.resume}}</span>
+                                <a class="uk-button uk-button-text uk-text-bold uk-margin-small" v-bind:href="'article.html?id='+article.link">LIRE...</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /card -->
+                </li>`
 });
