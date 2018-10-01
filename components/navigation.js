@@ -1,4 +1,4 @@
-var navigationlinks = [
+var navlinks = [
     {   link: 'article/le_club_oeno',             
         title: 'Le club Oeno'
     },
@@ -20,7 +20,11 @@ var navigationlinks = [
 ];
 
 Vue.component('component-nav', {
-    props: ['navlinks'],
+    data () {
+        return {
+            navlinks
+        }
+    },
     template: ` <div class="uk-container" id="navigation-index">
                     <nav class="nav-scroll nav-overlay uk-visible@m" >
                         <ul class="uk-subnav uk-flex uk-flex-between uk-flex-nowrap" data-ukmargin >
@@ -31,7 +35,11 @@ Vue.component('component-nav', {
 }) ;
 
 Vue.component('component-offcanvas', {
-    props: ['navlinks'],
+    data () {
+        return {
+            navlinks
+        }
+    },
     template: ` <div id="offcanvas-nav" data-uk-offcanvas="flip: true; overlay: true">
                     <div class="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide">
                         <button class="uk-offcanvas-close uk-close" type="button" data-uk-close></button>

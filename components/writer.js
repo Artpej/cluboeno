@@ -1,5 +1,27 @@
+//----------------WRITER LIST COMPONENT----------
 Vue.component('component-writerslist', {
-    props: ['writers', 'loadingwriters', 'erroredwriters'],
+    data () {
+        return {
+            writers : null,
+            loadingwriters: true,
+            erroredwriters: false,
+            start:0,
+            nb:5,
+            end:false
+        }
+    },
+    mounted () {
+        axios
+        .get('https://api.cluboeno.com/writers.php/ALL/')
+        .then(response => (
+            this.writers = response.data.writers) //a faire : catcher le message si aucun article à afficher
+        )
+        .catch(error => {
+            console.log(error)
+            this.erroredwriters = true
+        })
+        .finally(() => this.loadingwriters = false);
+    },
     template: ` <div>
                     <h4 class="uk-heading-line uk-text-bold"><span>Les contributeurs</span></h4>
                     <div v-if="erroredwriters">
@@ -15,6 +37,7 @@ Vue.component('component-writerslist', {
                 `
 }) ;
 
+//----------------SUB WRITER LIST COMPONENT----------
 Vue.component('component-writer', {
     props: ['writer'],
     template : ` <li>
@@ -35,19 +58,46 @@ Vue.component('component-writer', {
                 </li>`
 }) ;
 
+//--------------- WRITER COMPONENT----------
 Vue.component('component-articlewriter', {
-    props: ['writer'],
+    data () {
+        return {
+            loading: true,
+            errored:false,
+            writer:null
+        }
+    },
+    mounted () {
+        axios
+        .get('https://api.cluboeno.com/writers.php/ONE/'+idwriter)
+        .then(response => (
+            this.writer = response.data.writer) //a faire : catcher le message si aucun article à afficher
+        )
+        .catch(error => {
+            console.log(error)
+            this.errored = true
+        })
+        .finally(() => this.loading = false)
+    },
     template : `<section class="uk-section uk-section-small">
                     <div id="author-wrap" class="uk-container uk-container-small">
-                        <div class="uk-grid uk-grid-medium uk-flex uk-flex-middle" data-uk-grid>
-                            <div class="uk-width-auto">
-                                <img v-bind:src="writer.img" alt="" class="uk-border-circle">
-                            </div>
-                            <div class="uk-width-expand">
-                                <h4 class="uk-margin-remove uk-text-bold">{{writer.name}} ({{writer.pseudo}})</h4>
-                                <span class="uk-text-small uk-text-muted">{{writer.text}}</span>
-                            </div>
+                        <div v-if="errored">
+                            <p>Erreur de chargement</p>
+                        </div>
+                        <div v-else>
+                            <div v-if="loading"><div uk-spinner="ratio: 3"></div></div>
+                            <div v-else>
+                                <div  class="uk-grid uk-grid-medium uk-flex uk-flex-middle" data-uk-grid>
+                                    <div class="uk-width-auto"><img v-bind:src="writer.img" alt="" class="uk-border-circle"></div>
+                                    <div class="uk-width-expand">
+                                        <h4 class="uk-margin-remove uk-text-bold">{{writer.name}} ({{writer.pseudo}})</h4>
+                                        <span class="uk-text-small uk-text-muted">{{writer.text}}</span>
+                                    </div>
+                                </div>
+                            </div> 
                         </div>
                     </div>
                 </section>`
 }) ;
+
+

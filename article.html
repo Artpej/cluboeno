@@ -15,60 +15,14 @@
 		<link rel="stylesheet" type="text/css" href="./css/tuning.css">
 	</head>
 	<body>
-		<div class="uk-offcanvas-content">
-			<!--HEADER-->
-			<div id="headerId">
-				<component-header v-bind:socials="socialmedias"></component-header>
-			</div>
-			<!--/HEADER-->
-			<!--WRITER-->
-			<div id="writerId">
-				<component-articlewriter v-bind:writer="writer"></component-articlewriter>
-			</div>
-			<!--/WRITER-->
-			<div class="uk-container uk-container-small">
-				<hr class="uk-margin-remove">
-			</div>
-			<!--ARTICLE-->
-			<div id="articleId">
-				<component-articledetail v-bind:article="article" v-bind:errored="errored" v-bind:loading="loading"></component-articledetail>
-			</div>
-			<!--/ARTICLE-->
-
-			<!--MORE ARTICLE-->
-			<div id="morearcticleId">
-				<component-morearticle  v-bind:articles="articles" v-bind:errored="errored" v-bind:loading="loading"></component-morearticle>
-			</div>
-			<!--/MORE ARTICLE-->
-
-			<!--FOOTER-->
-			<div id="footerId">
-				<component-footer></component-footer>
-			</div>
-			<!--/FOOTER-->
-			<!-- BOTTOM BAR -->
-			<div class="uk-section uk-section-xsmall uk-section-default uk-position-bottom uk-position-fixed" style="border-top: 1px solid #f2f2f2">
-				<div class="uk-container uk-container-small uk-text-small">
-					<div class="uk-grid" data-uk-grid>
-						<div class="uk-width-expand">
-							<a href="#" class="uk-link-reset"><span data-uk-icon="icon: arrow-right"></span> <strong>Next article</strong>
-							<span class="uk-visible@s">- Vivamus hendrerit tristique tortor vel ultricies</span></a>
-						</div>
-						<div class="uk-width-auto uk-text-right">
-							<a href="#" class="uk-icon-link" data-uk-icon="icon: facebook"></a>
-							<a href="#" class="uk-icon-link" data-uk-icon="icon: twitter"></a>
-							<a href="#" class="uk-icon-link" data-uk-icon="icon: instagram"></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- /BOTTOM BAR -->
-			
-			<!-- OFFCANVAS -->
-			<div id="offcanvasId">
-				<component-offcanvas v-bind:navlinks="navlinks"></component-offcanvas>
-			</div>
-			<!-- /OFFCANVAS -->
+		<div class="uk-offcanvas-content" id="articleVue">
+			<!--HEADER--><component-header></component-header>				<!--/HEADER-->
+			<!--WRITER--><component-articlewriter></component-articlewriter><!--/WRITER-->
+			<div class="uk-container uk-container-small"><hr class="uk-margin-remove"></div>
+			<!--ARTICLE-->		<component-articledetail></component-articledetail>	<!--/ARTICLE-->
+			<!--MORE ARTICLE-->	<component-morearticle></component-morearticle>		<!--/MORE ARTICLE-->
+			<!--FOOTER-->		<component-footer></component-footer> 				<!--/FOOTER-->
+			<!-- OFFCANVAS -->	<component-offcanvas></component-offcanvas>	<!-- /OFFCANVAS -->
 		</div>
 		<!-- JS FILES -->
 		<script src="./js/uikit.min.js"></script>

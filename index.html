@@ -15,42 +15,14 @@
 		<link rel="stylesheet" type="text/css" href="./css/tuning.css">
 	</head>
 	<body>
-		<div class="uk-offcanvas-content">
-			<!--HEADER-->
-			<div id="headerId">
-				<component-header v-bind:socials="socialmedias"></component-header>
-			</div>
-			<!--/HEADER-->
-			<!-- NAVIGATION -->
-			<div id="navigationId">
-				<component-nav v-bind:navlinks="navlinks"></component-nav>
-			</div>
-			<!-- /NAVIGATION -->
-			<!-- HERO -->
-			<div id="heroarticleId">
-				<component-heroarticle  v-bind:article="article" v-bind:errored="errored" v-bind:loading="loading"></component-heroarticle>
-			</div>
-			<!-- HERO -->
-			<!-- FEATURED -->
-			<div id="featuredarticleId">
-				<component-featuredarticleslist v-bind:articles="articles" v-bind:errored="errored" v-bind:loading="loading"></component-featuredarticleslist>
-			</div>
-			<!-- /FEATURED -->
-			<!--CONTENT-->
-			<div id="contentindexId">
-				<component-contentindex v-bind:articles="articles" v-bind:loadingarticles="loadingarticles" v-bind:erroredarticles="erroredarticles" v-bind:writers="writers" v-bind:loadingwriters="loadingwriters" v-bind:erroredwriters="erroredwriters" ></component-contentindex>
-			</div>
-			<!--/CONTENT-->
-			<!--FOOTER-->
-			<div id="footerId">
-				<component-footer></component-footer>
-			</div>
-			<!--/FOOTER-->
-			<!-- OFFCANVAS -->
-			<div id="offcanvasId">
-				<component-offcanvas v-bind:navlinks="navlinks"></component-offcanvas>
-			</div>
-			<!-- /OFFCANVAS -->
+		<div class="uk-offcanvas-content" id="indexVue">
+			<!--HEADER-->		<component-header></component-header>								<!--/HEADER-->
+			<!--NAVIGATION -->	<component-nav></component-nav>										<!-- /NAVIGATION -->
+			<!--HERO -->		<component-heroarticle></component-heroarticle>						<!-- HERO -->
+			<!--FEATURED -->	<component-featuredarticleslist></component-featuredarticleslist>	<!-- /FEATURED -->
+			<!--CONTENT-->		<component-contentindex></component-contentindex>					<!--/CONTENT-->
+			<!--FOOTER-->		<component-footer></component-footer>								<!--/FOOTER-->
+			<!--OFFCANVAS -->	<component-offcanvas></component-offcanvas>							<!-- /OFFCANVAS -->
 		</div>
 		<!-- JS FILES -->
 		<script src="./js/uikit.min.js"></script>
