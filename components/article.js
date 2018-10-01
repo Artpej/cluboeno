@@ -1,6 +1,24 @@
 //Article en tête de page d'accueil
 Vue.component('component-heroarticle', {
-    props: ['article', 'errored', 'loading'],
+    data () {
+        return {
+            article: null,
+            loading: true,
+            errored: false
+        }
+    },
+    mounted () {
+        axios
+        .get('https://api.cluboeno.com/articles.php/HERO')
+        .then(response => (
+            this.article = response.data.article) //a faire : catcher le message si aucun article à afficher
+        )
+        .catch(error => {
+            console.log(error)
+            this.errored = true
+        })
+        .finally(() => this.loading = false)
+    },
     template: `<section  class="uk-section uk-section-small">
                     <div class="uk-container">
                         <div v-if="errored">
@@ -21,13 +39,30 @@ Vue.component('component-heroarticle', {
                             </div>
                         </div>
                     </div>
-                </section>
-`
+                </section>`
 });
 
 //Article en premier plan (tendances)
 Vue.component('component-featuredarticleslist', {
-    props: ['articles', 'errored', 'loading'],
+    data () {
+        return {
+            articles: null,
+            loading: true,
+            errored: false
+         }
+     },
+    mounted () {
+        axios
+        .get('https://api.cluboeno.com/articles.php/FEATURED/')
+        .then(response => (
+            this.articles = response.data.articles) //a faire : catcher le message si aucun article à afficher
+        )
+        .catch(error => {
+            console.log(error)
+            this.errored = true
+        })
+        .finally(() => this.loading = false)
+    },
     template: ` <div class="uk-container">
                     <h4 class="uk-heading-line uk-text-bold"><span>Premier plan</span></h4>
                     <div v-if="errored">
@@ -117,7 +152,25 @@ Vue.component('component-articlelistdetail', {
 
 //Page dédié aux articles
 Vue.component('component-articledetail', {
-    props: ['article', 'loading', 'errored'],
+    data () {
+        return {
+            article: null,
+            loading: true,
+            errored: false
+        }
+    },
+    mounted () {
+        axios
+        .get('https://api.cluboeno.com/articles.php/ONE/'+query['id'])
+        .then(response => (
+            this.article = response.data.article, idwriter=response.data.article.idwriter) //a faire : catcher le message si aucun article à afficher
+        )
+        .catch(error => {
+            console.log(error)
+            this.errored = true
+        })
+        .finally(() => this.loading = false)
+    },
     template : `<section class="uk-section uk-article">
                     <div v-if="errored">
                         <p>Erreur de chargement</p>
@@ -185,7 +238,25 @@ Vue.component('component-articledetailgalery', {
 
 //Page dédié aux articles : plus d'article de l'auteur
 Vue.component('component-morearticle', {
-    props: ['articles', 'loading', 'errored'],
+    data () {
+        return {
+            articles: null,
+            loading: true,
+            errored: false
+        }
+    },
+    mounted () {
+        axios
+        .get('https://api.cluboeno.com/articles.php/WRITER/'+idwriter)
+        .then(response => (
+            this.articles = response.data.articles) //a faire : catcher le message si aucun article à afficher
+        )
+        .catch(error => {
+            console.log(error)
+            this.errored = true
+        })
+        .finally(() => this.loading = false)
+    },
     template : `<section class="uk-section uk-section-muted">
                     <div v-if="errored">
                         <p>Erreur de chargement</p>

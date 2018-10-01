@@ -1,17 +1,19 @@
-var socialmedias = [
-    {   icon: 'facebook',             
-        link: '#'
-    },
-    {   icon: 'twitter',             
-        link: '#'
-    },
-    {   icon: 'instagram',             
-        link: '#'
-    }
-];
-
 Vue.component('component-header', {
-    props: ['socials' ],
+    data () {
+        return {
+            socials : [
+                {   icon: 'facebook',             
+                    link: '#'
+                },
+                {   icon: 'twitter',             
+                    link: '#'
+                },
+                {   icon: 'instagram',             
+                    link: '#'
+                }
+            ]
+        }
+    },
     template: ` <header style="background-color: #fff;" data-uk-sticky="show-on-up: true; animation: uk-animation-fade; media: @l">
                     <div class="uk-container">
                         <nav id="navbar" data-uk-navbar="mode: click;">
@@ -22,7 +24,7 @@ Vue.component('component-header', {
                                 </ul>
                             </div>
                             <div class="uk-navbar-center nav-overlay">
-                                <a class="uk-navbar-item uk-logo" href="index.html" title="Logo"><span uk-icon="icon:git-fork;ratio:3"></span></a>
+                                <a class="uk-navbar-item uk-logo" href="index.html" title="Logo"><span uk-icon="icon:home;ratio:3"></span></a>
                             </div>
                             <div class="uk-navbar-right nav-overlay">
                                 <a class="uk-navbar-toggle uk-visible@m" data-uk-search-icon uk-tooltip="title: Bientôt disponible; pos: right" data-uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
