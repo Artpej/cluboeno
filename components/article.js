@@ -149,7 +149,6 @@ Vue.component('component-articlelistdetail', {
                 </article>`
 });
 
-
 //Page dédié aux articles
 Vue.component('component-articledetail', {
     data () {
@@ -161,9 +160,9 @@ Vue.component('component-articledetail', {
     },
     mounted () {
         axios
-        .get('https://api.cluboeno.com/articles.php/ONE/'+query['id'])
+        .get('https://api.cluboeno.com/articles.php/ONE/'+idlink)
         .then(response => (
-            this.article = response.data.article, idwriter=response.data.article.idwriter) //a faire : catcher le message si aucun article à afficher
+            this.article = response.data.article) //a faire : catcher le message si aucun article à afficher
         )
         .catch(error => {
             console.log(error)
@@ -238,6 +237,7 @@ Vue.component('component-articledetailgalery', {
 
 //Page dédié aux articles : plus d'article de l'auteur
 Vue.component('component-morearticle', {
+    props: ['idwriter'],
     data () {
         return {
             articles: null,
@@ -247,7 +247,7 @@ Vue.component('component-morearticle', {
     },
     mounted () {
         axios
-        .get('https://api.cluboeno.com/articles.php/WRITER/'+idwriter)
+        .get('https://api.cluboeno.com/articles.php/WRITER/'+this.idwriter) //+idwriter)
         .then(response => (
             this.articles = response.data.articles) //a faire : catcher le message si aucun article à afficher
         )
