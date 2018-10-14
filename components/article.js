@@ -237,7 +237,6 @@ Vue.component('component-articledetailgalery', {
 
 //Page dédié aux articles : plus d'article de l'auteur
 Vue.component('component-morearticle', {
-    props: ['idwriter'],
     data () {
         return {
             articles: null,
@@ -247,7 +246,7 @@ Vue.component('component-morearticle', {
     },
     mounted () {
         axios
-        .get('https://api.cluboeno.com/articles.php/WRITER/'+this.idwriter) //+idwriter)
+        .get('https://api.cluboeno.com/articles.php/WRITER/') //+idwriter)
         .then(response => (
             this.articles = response.data.articles) //a faire : catcher le message si aucun article à afficher
         )

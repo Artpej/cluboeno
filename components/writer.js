@@ -60,17 +60,16 @@ Vue.component('component-writer', {
 
 //--------------- WRITER COMPONENT----------
 Vue.component('component-articlewriter', {
-    props: ['idwriter'],
     data () {
         return {
             loading: true,
-            errored:false,
-            writer:null
+            errored: false,
+            writer : null
         }
     },
     mounted () {
         axios
-        .get('https://api.cluboeno.com/writers.php/ONE/'+this.idwriter)
+        .get('https://api.cluboeno.com/writers.php/ONE/'+idwriter)
         .then(response => (
             this.writer = response.data.writer) //a faire : catcher le message si aucun article à afficher
         )
