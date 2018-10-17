@@ -1,28 +1,28 @@
 //----------------WRITER LIST COMPONENT----------
 Vue.component('component-writerslist', {
-    data () {
-        return {
-            writers : null,
-            loadingwriters: true,
-            erroredwriters: false,
-            start:0,
-            nb:5,
-            end:false
-        }
-    },
-    mounted () {
-        axios
-        .get('https://api.cluboeno.com/writers.php/ALL/')
-        .then(response => (
-            this.writers = response.data.writers) //a faire : catcher le message si aucun article à afficher
-        )
-        .catch(error => {
-            console.log(error)
-            this.erroredwriters = true
-        })
-        .finally(() => this.loadingwriters = false);
-    },
-    template: ` <div>
+  data() {
+    return {
+      writers: null,
+      loadingwriters: true,
+      erroredwriters: false,
+      start: 0,
+      nb: 5,
+      end: false
+    }
+  },
+  mounted() {
+    axios
+      .get('https://api.cluboeno.com/writers.php/ALL/')
+      .then(
+        response => (this.writers = response.data.writers) //a faire : catcher le message si aucun article à afficher
+      )
+      .catch(error => {
+        console.log(error)
+        this.erroredwriters = true
+      })
+      .finally(() => (this.loadingwriters = false))
+  },
+  template: ` <div>
                     <h4 class="uk-heading-line uk-text-bold"><span>Les contributeurs</span></h4>
                     <div v-if="erroredwriters">
                         <p>Erreur de chargement</p>
@@ -35,12 +35,12 @@ Vue.component('component-writerslist', {
                     </div>
                 </div>
                 `
-}) ;
+})
 
 //----------------SUB WRITER LIST COMPONENT----------
 Vue.component('component-writer', {
-    props: ['writer'],
-    template : ` <li>
+  props: ['writer'],
+  template: ` <li>
                     <div class="uk-card uk-card-default" >
                         <div class="uk-card-header">
                             <div class="uk-grid-small uk-flex-middle" uk-grid>
@@ -56,30 +56,38 @@ Vue.component('component-writer', {
                         <div class="uk-card-body uk-text-small uk-text-center">{{writer.text}}</div>
                     </div>
                 </li>`
-}) ;
+})
 
 //--------------- WRITER COMPONENT----------
 Vue.component('component-articlewriter', {
-    data () {
-        return {
-            loading: true,
-            errored: false,
-            writer : null
-        }
-    },
-    mounted () {
-        axios
-        .get('https://api.cluboeno.com/writers.php/ONE/'+idwriter)
-        .then(response => (
-            this.writer = response.data.writer) //a faire : catcher le message si aucun article à afficher
-        )
-        .catch(error => {
-            console.log(error)
-            this.errored = true
-        })
-        .finally(() => this.loading = false)
-    },
-    template : `<section class="uk-section uk-section-small">
+  data() {
+    return {
+      loading: true,
+      errored: false,
+      writer: {
+        id: '0',
+        name: 'John Doe',
+        pseudo: 'Unknown',
+        text: 'On en boira toujours du plus mauvais!',
+        img: 'https://picsum.photos/100/100/?random=10'
+      }
+    }
+  },
+  created() {
+    EventsBus.$on('id-writer', id => {
+      axios
+      .get('https://api.cluboeno.com/writers.php/ONE/' + id)
+      .then(
+        response => (this.writer = response.data.writer) //a faire : catcher le message si aucun article à afficher
+      )
+      .catch(error => {
+        console.log(error)
+        this.errored = true
+      })
+      .finally(() => (this.loading = false))
+    })
+  },
+  template: `<section class="uk-section uk-section-small">
                     <div id="author-wrap" class="uk-container uk-container-small">
                         <div v-if="errored">
                             <p>Erreur de chargement</p>
@@ -98,6 +106,4 @@ Vue.component('component-articlewriter', {
                         </div>
                     </div>
                 </section>`
-}) ;
-
-
+})

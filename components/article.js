@@ -161,9 +161,10 @@ Vue.component('component-articledetail', {
     mounted () {
         axios
         .get('https://api.cluboeno.com/articles.php/ONE/'+idlink)
-        .then(response => (
-            this.article = response.data.article) //a faire : catcher le message si aucun article à afficher
-        )
+        .then(response =>  {
+            this.article = response.data.article //a faire : catcher le message si aucun article à afficher            
+            EventsBus.$emit('id-writer', this.article.idwriter)
+        })
         .catch(error => {
             console.log(error)
             this.errored = true
